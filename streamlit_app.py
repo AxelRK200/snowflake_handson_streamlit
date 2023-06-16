@@ -15,4 +15,4 @@ liste_a_afficher = streamlit.multiselect("Choisis ton fruit:", list(my_fruit_lis
 filtered_df = my_fruit_list[my_fruit_list['Fruit'].isin(liste_a_afficher)]
 
 # Affichage du DataFrame sur la page
-streamlit.dataframe(my_fruit_list)
+streamlit.dataframe(filtered_df)
