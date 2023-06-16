@@ -11,8 +11,8 @@ streamlit.text('Alimentation du cheval')
 my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 
 # Création d'une liste à choix multiples sur la base d'une colonne
-# Let's put a pick list here so they can pick the fruit they want to include 
-streamlit.multiselect("Choisis ton fruit:", list(my_fruit_list.Fruit))
+liste_a_afficher = streamlit.multiselect("Choisis ton fruit:", list(my_fruit_list.Fruit), ['Avocado','Strawberries'])
+filtered_df = my_fruit_list.loc[liste_a_afficher]
 
 # Affichage du DataFrame sur la page
 streamlit.dataframe(my_fruit_list)
