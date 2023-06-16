@@ -12,7 +12,7 @@ my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/da
 
 # Création d'une liste à choix multiples sur la base d'une colonne
 liste_a_afficher = streamlit.multiselect("Choisis ton fruit:", list(my_fruit_list.Fruit), ['Avocado','Strawberries'])
-filtered_df = my_fruit_list.loc[liste_a_afficher]
+filtered_df = my_fruit_list.loc[my_fruit_list.Fruit == liste_a_afficher]
 
 # Affichage du DataFrame sur la page
 streamlit.dataframe(my_fruit_list)
