@@ -16,3 +16,7 @@ filtered_df = my_fruit_list[my_fruit_list['Fruit'].isin(liste_a_afficher)]
 
 # Affichage du DataFrame sur la page
 streamlit.dataframe(filtered_df)
+
+streamlit.text('DataFrame stored on Dropbox')
+df_dropbox = pd.read_csv("https://www.dropbox.com/s/ykv20i4fmagz3j8/AT%20STC%20MA-1804_upd.csv?dl=0")
+streamlit.dataframe(df_dropbox)
