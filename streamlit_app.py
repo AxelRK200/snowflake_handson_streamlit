@@ -18,5 +18,5 @@ filtered_df = my_fruit_list[my_fruit_list['Fruit'].isin(liste_a_afficher)]
 streamlit.dataframe(filtered_df)
 
 streamlit.text('DataFrame stored on Dropbox')
-df_dropbox = pd.read_csv("https://www.dropbox.com/s/ykv20i4fmagz3j8/AT%20STC%20MA-1804_upd.csv?dl=0")
+df_dropbox = pd.read_csv("https://www.dropbox.com/s/wjy4646fz9wvun6/NDX_1D_AT_STC_MA_100_max_Net_Profit_%20All_random.csv?dl=1", on_bad_lines='skip')
 streamlit.dataframe(df_dropbox)
