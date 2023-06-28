@@ -1,5 +1,6 @@
 import streamlit
 import pandas as pd
+import requests
 
 streamlit.title('Bienvenue au PMU')
 streamlit.text('Prenez vos paris')
@@ -20,3 +21,9 @@ streamlit.dataframe(filtered_df)
 streamlit.text('DataFrame stored on Dropbox')
 df_dropbox = pd.read_csv("https://www.dropbox.com/s/vku7tldegl2w9em/CL2_daily.csv?dl=1", on_bad_lines='skip')
 streamlit.dataframe(df_dropbox.head())
+
+# Affichage d'un appel API
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.header("Fruityvice Fruit Advice!")
+streamlit.text("Résultat d'un appel API")
+streamlit.text(fruityvice_response.json())
