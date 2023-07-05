@@ -19,8 +19,8 @@ filtered_df = my_fruit_list[my_fruit_list['Fruit'].isin(liste_a_afficher)]
 streamlit.dataframe(filtered_df)
 
 streamlit.text('DataFrame stored on Dropbox')
-df_dropbox = pd.read_csv("https://www.dropbox.com/s/vku7tldegl2w9em/CL2_daily.csv?dl=1", on_bad_lines='skip')
-streamlit.dataframe(df_dropbox.head())
+df_dropbox = pd.read_csv("https://www.dropbox.com/s/biy9qe38xngrpcf/Analyse_quotidienne_Daily_entries.csv?dl=1", on_bad_lines='skip')
+streamlit.dataframe(df_dropbox.tail(25), use_container_width=True)
 
 # Affichage d'un appel API
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
