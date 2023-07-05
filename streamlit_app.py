@@ -24,7 +24,12 @@ df_dropbox = pd.read_csv("https://www.dropbox.com/s/biy9qe38xngrpcf/Analyse_quot
 streamlit.dataframe(df_dropbox.tail(25), height=915)
 
 # Affichage d'un appel API
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+# Textbox pour determiner le fruit. Utilisation de variable dans appel api
+fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+streamlit.write('Aliment selectionné', fruit_choice)
+# Appel API variabilisé
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+# Mise en forme du résultat dans la page
 streamlit.header("Fruityvice Fruit Advice!")
 streamlit.text("Résultat d'un appel API")
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
