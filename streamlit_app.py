@@ -21,7 +21,7 @@ streamlit.dataframe(filtered_df)
 
 streamlit.text('DataFrame stored on Dropbox')
 df_dropbox = pd.read_csv("https://www.dropbox.com/s/biy9qe38xngrpcf/Analyse_quotidienne_Daily_entries.csv?dl=1", on_bad_lines='skip')
-streamlit.dataframe(df_dropbox.tail(25), use_container_width=True)
+streamlit.dataframe(df_dropbox.tail(25))
 
 # Affichage d'un appel API
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
