@@ -2,9 +2,10 @@ import streamlit
 import pandas as pd
 import requests
 
-streamlit.title('Bienvenue au PMU')
-streamlit.text('Prenez vos paris')
+streamlit.set_page_config(page_title="Bienvenue au PMU", layout="wide")
+#streamlit.title('Bienvenue au PMU')
 
+streamlit.text('Prenez vos paris')
 streamlit.header('🐎 cote de Apollo Quick à 9 contre 1')
 streamlit.text('Alimentation du cheval')
 
