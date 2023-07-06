@@ -20,7 +20,7 @@ filtered_df = my_fruit_list[my_fruit_list['Fruit'].isin(liste_a_afficher)]
 streamlit.dataframe(filtered_df)
 
 streamlit.text('DataFrame stored on Dropbox')
-df_dropbox = pd.read_excel("https://www.dropbox.com/scl/fi/u273mubm3gybgcs9t3mv7/Analyse_quotidienne_Daily_entries.xlsx?rlkey=wmx2qhcmfxyt9j20yxfi030jz&dl=1")
+df_dropbox = pd.read_csv("https://www.dropbox.com/s/7tzhy9xe99740vo/Analyse_quotidienne_Daily_entries.csv?dl=1)
 streamlit.dataframe(df_dropbox.tail(25), height=915)
 
 # Affichage d'un appel API
