@@ -48,3 +48,7 @@ my_cur.execute("SELECT * FROM fruit_load_list")
 fruits = my_cur.fetchall()
 streamlit.header("Appel de la table fruit_load_list")
 streamlit.dataframe(fruits)
+
+# Ajout d'une 2e Textbox 
+fruit_choice2 = streamlit.text_input('What fruit would you like to add ?','Banana')
+streamlit.text('Merci d avoir ajouté : ', fruit_choice2)
