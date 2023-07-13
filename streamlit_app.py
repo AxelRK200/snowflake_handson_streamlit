@@ -25,6 +25,12 @@ streamlit.text('DataFrame stored on Dropbox')
 df_dropbox = pd.read_csv("https://www.dropbox.com/s/7tzhy9xe99740vo/Analyse_quotidienne_Daily_entries.csv?dl=1")
 streamlit.dataframe(df_dropbox.tail(25), height=915)
 
+# usage d'une fonction
+def get_fruityvice_data(fruit):
+  '''retourne en dataframe le json obtenu en réponse de l'appel api'''
+  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+  return pd.json_normalize(fruityvice_response.json())
+
 # Affichage d'un appel API
 # Textbox pour determiner le fruit. Utilisation de variable dans appel api
 try:
@@ -33,13 +39,9 @@ try:
     streamlit.error("Veuillez selectionner un fruit pour avoir les infos")
   else :
     streamlit.write('Aliment selectionné', fruit_choice)
-    # Appel API variabilisé
-    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
-    # Mise en forme du résultat dans la page
-    streamlit.header("Fruityvice Fruit Advice!")
-    streamlit.text("Résultat d'un appel API")
-    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-    streamlit.dataframe(fruityvice_normalized)
+    # Appel API variabilisé, via fonction
+    streamlit.text("Résultat de l'appel API")
+    streamlit.dataframe(get_fruityvice_data(fruit_choice))
 except URLError as e :
   streamlit.error()
 streamlit.stop()
