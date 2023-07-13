@@ -2,7 +2,7 @@ import streamlit
 import pandas as pd
 import requests
 import snowflake.connector
-from urllib.error import URLerror
+from urllib.error import URLError
 
 streamlit.set_page_config(page_title="Bienvenue au PMU", layout="wide")
 #streamlit.title('Bienvenue au PMU')
