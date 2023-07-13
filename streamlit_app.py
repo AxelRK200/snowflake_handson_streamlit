@@ -27,16 +27,22 @@ streamlit.dataframe(df_dropbox.tail(25), height=915)
 
 # Affichage d'un appel API
 # Textbox pour determiner le fruit. Utilisation de variable dans appel api
-fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('Aliment selectionné', fruit_choice)
-# Appel API variabilisé
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
-# Mise en forme du résultat dans la page
-streamlit.header("Fruityvice Fruit Advice!")
-streamlit.text("Résultat d'un appel API")
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-streamlit.dataframe(fruityvice_normalized)
-
+try:
+  fruit_choice = streamlit.text_input('What fruit would you like information about?')
+  if not fruit_choice:
+    streamlit.error("Veuillez selectionner un fruit pour avoir les infos")
+  else :
+    a
+    streamlit.write('Aliment selectionné', fruit_choice)
+    # Appel API variabilisé
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+    # Mise en forme du résultat dans la page
+    streamlit.header("Fruityvice Fruit Advice!")
+    streamlit.text("Résultat d'un appel API")
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+    streamlit.dataframe(fruityvice_normalized)
+except URLError as e :
+  streamlit.error()
 streamlit.stop()
 
 # Test de connexion à Snowflake
