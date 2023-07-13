@@ -52,6 +52,7 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
+my_cnx.close()
 streamlit.text("Hello from Snowflake:")
 streamlit.text(my_data_row)
 
@@ -63,6 +64,7 @@ def appel_table():
 if streamlit.button('Obtenir la liste'):
   my_cnx2 = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   fruits = appel_table()
+  my_cnx2.close()
   streamlit.text("Appel de la table fruit_load_list")
   streamlit.dataframe(fruits)
 
@@ -81,3 +83,4 @@ if streamlit.button('Ajouter le fruit'):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   res = ajout_ligne(fruit_choice2)
   streamlit.text(res)
+  my_cnx.close()
