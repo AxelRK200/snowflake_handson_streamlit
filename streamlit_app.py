@@ -69,5 +69,15 @@ if streamlit.button('Obtenir la liste'):
 
 
 # Ajout d'une 2e Textbox 
-fruit_choice2 = streamlit.text_input('What fruit would you like to add ?','Banana')
-streamlit.write('Merci d avoir ajouté : ', fruit_choice2)
+# Utlisation du même principe de bouton et fonction que l'étape précédente
+def ajout_ligne(nouveau_fruit):
+  with my_cnx.cursor() as my_cur :
+    my_cur.execute("INSERT INTO fruit_load_list VALUES ('nouveau_fruit')")
+    return "Ajouté avec succès : " + nouveau_fruit
+
+fruit_choice2 = streamlit.text_input('Quel fruit souhaitez vous ajouter à la table ?')
+
+if streamlit.button('Ajouter le fruit'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  res = ajout_ligne(fruit_choice2)
+  streamlit.text(res)
