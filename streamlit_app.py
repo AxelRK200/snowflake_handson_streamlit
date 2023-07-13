@@ -44,6 +44,7 @@ try:
     streamlit.dataframe(get_fruityvice_data(fruit_choice))
 except URLError as e :
   streamlit.error()
+
 streamlit.stop()
 
 # Test de connexion à Snowflake
@@ -54,10 +55,18 @@ my_data_row = my_cur.fetchone()
 streamlit.text("Hello from Snowflake:")
 streamlit.text(my_data_row)
 
-my_cur.execute("SELECT * FROM fruit_load_list")
-fruits = my_cur.fetchall()
-streamlit.header("Appel de la table fruit_load_list")
-streamlit.dataframe(fruits)
+def appel_table():
+  with my_cnx2.cursor() as my_cur2 :
+    my_cur2.execute("SELECT * FROM fruit_load_list")
+    return my_cur2.fetchall()
+
+if streamlit.button('Obtenir la liste'):
+  my_cnx2 = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  fruits = appel_table()
+  streamlit.text("Appel de la table fruit_load_list")
+  streamlit.dataframe(fruits)
+
+
 
 # Ajout d'une 2e Textbox 
 fruit_choice2 = streamlit.text_input('What fruit would you like to add ?','Banana')
