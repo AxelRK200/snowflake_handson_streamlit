@@ -72,7 +72,7 @@ if streamlit.button('Obtenir la liste'):
 # Utlisation du même principe de bouton et fonction que l'étape précédente
 def ajout_ligne(nouveau_fruit):
   with my_cnx.cursor() as my_cur :
-    my_cur.execute("INSERT INTO fruit_load_list VALUES ('nouveau_fruit')")
+    my_cur.execute("INSERT INTO fruit_load_list VALUES ('" + nouveau_fruit + "')")
     return "Ajouté avec succès : " + nouveau_fruit
 
 fruit_choice2 = streamlit.text_input('Quel fruit souhaitez vous ajouter à la table ?')
