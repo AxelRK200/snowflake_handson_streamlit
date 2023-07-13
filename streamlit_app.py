@@ -2,6 +2,7 @@ import streamlit
 import pandas as pd
 import requests
 import snowflake.connector
+from urllib.error import URLerror
 
 streamlit.set_page_config(page_title="Bienvenue au PMU", layout="wide")
 #streamlit.title('Bienvenue au PMU')
@@ -35,6 +36,8 @@ streamlit.header("Fruityvice Fruit Advice!")
 streamlit.text("Résultat d'un appel API")
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_normalized)
+
+streamlit.stop()
 
 # Test de connexion à Snowflake
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
