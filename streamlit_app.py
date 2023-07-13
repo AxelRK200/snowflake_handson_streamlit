@@ -32,7 +32,6 @@ try:
   if not fruit_choice:
     streamlit.error("Veuillez selectionner un fruit pour avoir les infos")
   else :
-    a
     streamlit.write('Aliment selectionné', fruit_choice)
     # Appel API variabilisé
     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
